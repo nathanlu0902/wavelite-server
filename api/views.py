@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
+from .models import User
 
 #该方法禁用csrf
 @csrf_exempt
@@ -20,7 +21,15 @@ def login(request):
       return JsonResponse({"code":"1003","msg":"openid request error"})
     else:
       openid=response['openid']
-    return openid
+  try:
+    user=User.objects.get(openid=openid)
+  except User.DoesNotExist:
+    return JsonResponse({"code":"1004","msg":"User does not exit"})
+  return JsonResponse({"nickname":user.username,"phonenumber":user.phonenumber,"birth":user.birth})
+
+
+def register(request):
+
     
     
 
