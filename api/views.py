@@ -9,7 +9,6 @@ def login(request):
   if request.method!="POST":
     return JsonResponse({"code":"1001","msg":"请求方法错误"})
   else:
-    print(request.POST)
     code=request.POST.get("code","0")
     if code=="0":
       return JsonResponse({"code":"1002","msg":"code is empty"})
@@ -29,7 +28,8 @@ def login(request):
 
 
 def register(request):
-
+  if request.method!="POST":
+    return JsonResponse({"code":"1001","msg":"请求方法错误"})
     
     
 
