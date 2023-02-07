@@ -11,7 +11,7 @@ def login(request):
   try:
     user=User.objects.get(openid=openid)
   except User.DoesNotExist:
-    return JsonResponse({"code":"1004","msg":"User does not exit"})
+    return JsonResponse({"code":"1004","msg":"User is not existed"})
   else:
     return JsonResponse({"code":"1005",
                 "nickname":user.nickname,
@@ -24,7 +24,7 @@ def login(request):
 @csrf_exempt
 def registerUser(request):
   if request.method!="POST":
-    return JsonResponse({"code":"1001","msg":"请求方法错误"})
+    return JsonResponse({"code":"1001","msg":"wrong request method"})
   # nickname=request.POST.get("nickname")
   phone=request.POST.get("phone")
   # gender=request.POST.get("gender")
@@ -36,25 +36,29 @@ def registerUser(request):
 @csrf_exempt
 def updateUser(request):
   if request.method!="POST":
-    return JsonResponse({"code":"1001","msg":"请求方法错误"})
+    return JsonResponse({"code":"1001","msg":"wrong request method"})
   openid=request.POST.get("openid")
-  user=User.objects.filter(openid=openid)
-  #查找并更新数据库个人信息
-  try:
-    for (k,v) in request.POST:
-      print(k,v)
-      if user[k]!=v:
-        user[k]=v
-    user.save()
-    return JsonResponse({"code":"1007","msg":"User info updated"})
-  except:
-    print("error when update user info")
+  user=User.objects.get(openid=openid)
+  if user.DoesNotExist:
+    return JsonResponse({"code":"1004","msg":"User is not existed"})
+  else:
+    print(openid,user)
+    #查找并更新数据库个人信息
+    try:
+      for (k,v) in request.POST:
+        print(k,v)
+        if user[k]!=v:
+          user[k]=v
+      user.save()
+      return JsonResponse({"code":"1007","msg":"User info updated"})
+    except:
+      print("error when update user info")
   
     
 
 def getOpenId(request):
   if request.method!="POST":
-    return JsonResponse({"code":"1001","msg":"请求方法错误"})
+    return JsonResponse({"code":"1001","msg":"wrong request method"})
   else:
     code=request.POST.get("code","0")
     if code=="0":

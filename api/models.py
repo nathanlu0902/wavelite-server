@@ -16,7 +16,7 @@ LEVEL_CHOICES=(
 class User(models.Model):
 
     userid=models.CharField(max_length=10,primary_key=True,unique=True)
-    openid=models.CharField(max_length=100,null=True)
+    openid=models.CharField(max_length=100,unique=True)
     nickname=models.CharField(max_length=32,blank=True,null=True)
     phone=models.CharField(max_length=11,null=True)
     gender=models.CharField(max_length=1,choices=GENDER_CHOICES,blank=True,null=True)
