@@ -7,18 +7,22 @@ from .models import User
 @csrf_exempt
 def login(request):
   openid=getOpenId(request)
-  print(openid)
   try:
     user=User.objects.get(openid=openid)
   except User.DoesNotExist:
-    return JsonResponse({"code":"1004","msg":"User is not existed"})
+    return JsonResponse({
+      "code":"1004",
+      "msg":"User is not existed",
+      "openid":openid
+      })
   else:
-    return JsonResponse({"code":"1005",
-                "nickname":user.nickname,
-                "phone":user.phone,
-                "birth":user.birth,
-                "openid":user.openid
-                })
+    return JsonResponse({
+      "code":"1005",
+      "nickname":user.nickname,
+      "phone":user.phone,
+      "birth":user.birth,
+      "openid":user.openid
+      })
 
 
 @csrf_exempt
@@ -31,6 +35,7 @@ def registerUser(request):
   openid=request.POST.get("openid")
   user=User(phone=phone,openid=openid)
   user.save()
+  print("user is created with userid:",openid)
   return JsonResponse({"code":"1006","msg":"user is created"})
 
 @csrf_exempt
@@ -38,21 +43,25 @@ def updateUser(request):
   if request.method!="POST":
     return JsonResponse({"code":"1001","msg":"wrong request method"})
   openid=request.POST.get("openid")
-  user=User.objects.get(openid=openid)
-  if user.DoesNotExist:
+  print("server to lookup openid:"+openid)
+  try:
+    user=User.objects.get(openid=openid)
+  except user.DoesNotExist:
     return JsonResponse({"code":"1004","msg":"User is not existed"})
   else:
-    print(openid,user)
+    print("found user with openid:"+user.openid)
     #查找并更新数据库个人信息
     try:
-      for (k,v) in request.POST:
-        print(k,v)
-        if user[k]!=v:
-          user[k]=v
+      print("received"+request.POST.get("phone"))
+      user.nickname=request.POST.get("nickname")
+      user.phone=request.POST.get("phone")
+      user.gender=request.POST.get("gender")
+      # birth=request.POST.get("birth")
+      # user=User(phone=phone,nickname=nickname,gender=gender)
       user.save()
       return JsonResponse({"code":"1007","msg":"User info updated"})
-    except:
-      print("error when update user info")
+    except Exception as e:
+      return JsonResponse({"code":"1008","msg":e})
   
     
 
@@ -61,6 +70,7 @@ def getOpenId(request):
     return JsonResponse({"code":"1001","msg":"wrong request method"})
   else:
     code=request.POST.get("code","0")
+    print("server received code:"+code)
     if code=="0":
       return JsonResponse({"code":"1002","msg":"code is empty"})
 
@@ -72,4 +82,5 @@ def getOpenId(request):
       return JsonResponse({"code":"1003","msg":"openid request error"})
     else:
       openid=response['openid']
+      print("server received openid"+openid)
       return openid
