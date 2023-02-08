@@ -52,11 +52,11 @@ def updateUser(request):
     print("found user with openid:"+user.openid)
     #查找并更新数据库个人信息
     try:
-      print("received"+request.POST.get("phone"))
       user.nickname=request.POST.get("nickname")
       user.phone=request.POST.get("phone")
       user.gender=request.POST.get("gender")
-      # birth=request.POST.get("birth")
+      user.birth=request.POST.get("birth")
+      print("received",request.POST.get("birth"))
       # user=User(phone=phone,nickname=nickname,gender=gender)
       user.save()
       return JsonResponse({"code":"1007","msg":"User info updated"})
