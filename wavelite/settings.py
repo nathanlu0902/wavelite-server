@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wavelite',
-    'api'
+    'api',
+    'rest_framework'
 ]
 
 WX_APP_ID='wx63fd2a9f576da51b'

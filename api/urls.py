@@ -1,10 +1,15 @@
 
-from django.urls import path
-from api.views import login,registerUser,updateUser
+from django.urls import path,include
+from api.views import login,registerUser,updateUser,GoodsViewSet,GoodsCategoryViewSet
+from rest_framework import routers
 
-app_name='login'
+router=routers.DefaultRouter()
+router.register("GoodsCategory",GoodsCategoryViewSet)
+router.register("Goods",GoodsViewSet)
+
 urlpatterns = [
     path('login', login),
     path('registerUser',registerUser),
-    path('updateUser',updateUser)
+    path('',include(router.urls)),
+    path('updateUser',updateUser),
 ]

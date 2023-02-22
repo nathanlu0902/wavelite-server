@@ -1,0 +1,85 @@
+[
+  {
+    "model": "api.Goods",
+    "pk": "POKE001",
+    "fields": {
+      "goodsName": "地中海蒜香虾波奇碗",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 1,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "POKE002",
+    "fields": {
+      "goodsName": "加利福尼亚波奇碗",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 1,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "POKE003",
+    "fields": {
+      "goodsName": "日式吞拿鱼波奇碗",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 1,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "POKE004",
+    "fields": {
+      "goodsName": "牛肉卷泡菜波奇碗",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 1,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "PASTA001",
+    "fields": {
+      "goodsName": "博洛尼亚肉酱意面",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 2,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "PASTA002",
+    "fields": {
+      "goodsName": "韩式玫瑰奶油意面",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 2,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "PASTA003",
+    "fields": {
+      "goodsName": "奶油蘑菇鸡胸意面",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryId": 2,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  }]

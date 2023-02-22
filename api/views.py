@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
-from .models import User
+from .models import User,Goods,GoodsCategory
+from .serializers import GoodsCategorySerializer,GoodsSerializer
+from rest_framework import viewsets
 
 #该方法禁用csrf
 @csrf_exempt
@@ -84,3 +86,13 @@ def getOpenId(request):
       openid=response['openid']
       print("server received openid"+openid)
       return openid
+
+class GoodsCategoryViewSet(viewsets.ModelViewSet):
+  queryset=GoodsCategory.objects.all()
+  serializer_class=GoodsCategorySerializer
+
+class GoodsViewSet(viewsets.ModelViewSet):
+  queryset=Goods.objects.all()
+  serializer_class=GoodsSerializer
+
+    

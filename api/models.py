@@ -29,3 +29,22 @@ class User(models.Model):
     def __str__(self):
         return self.openid
 
+
+class Goods(models.Model):
+    id=models.CharField(max_length=30,unique=True,primary_key=True)
+    goodsName=models.CharField(max_length=30,unique=True)
+    goodsRemark=models.TextField(null=True)
+    goodsPrice=models.DecimalField(max_digits=7,decimal_places=2,default=0)
+    goodsCategoryId=models.ForeignKey('GoodsCategory',on_delete=models.CASCADE) #分类删除则菜品也删除
+    goodsSale=models.IntegerField(default=0)
+    goodsPic=models.CharField(max_length=100,blank=True,null=True)
+    
+    def __str__(self):
+      return self.id
+
+class GoodsCategory(models.Model):
+    category=models.CharField(max_length=30,unique=True)
+    id=models.AutoField(primary_key=True,unique=True)
+
+    def __str__(self):
+      return self.category
