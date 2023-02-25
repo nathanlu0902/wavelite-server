@@ -15,21 +15,58 @@ class UserView(APIView):
 
   def get_object(self,openid):
     try:
+      return User.objects.get(openid=openid)
+    except User.DoesNotExist:
+      raise Http404
+  
+  # def get_object(self,openid):
+  #   try:
+  #     return User.objects.get(pk=openid)
+  #   except User.DoesNotExist:
+  #     raise Http404
+
+  # def get(self,openid,format=None):
+  #   user=self.get_user(openid)
+  #   serializer=UserSerializer(user)
+  #   return Response(serializer.data)
+
+  def post(self,request,openid):
+    serializer=UserSerializer(data=openid)
+    # if self.get_object(openid):
+    #   Response(serializer.data,status=status.HTTP_409_CONFLICT)
+    if serializer.is_valid(): 
+      serializer.save()
+      return Response(serializer.data,status=status.HTTP_201_CREATED)
+    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+  
+  def delete(self,request,openid,format=None):
+    user=self.get_object(openid)
+    user.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+  
+
+class UserDetailView(APIView):
+  def get_object(self,openid):
+    try:
       return User.objects.get(pk=openid)
     except User.DoesNotExist:
       raise Http404
 
   def get(self,openid,format=None):
-    user=self.get_user(openid)
+    user=self.get_object(openid)
     serializer=UserSerializer(user)
     return Response(serializer.data)
-
-  def post(self,request):
-    serializer=UserSerializer(data=request.data)
+  
+  def put(self,request,openid,format=None):
+    user=self.get_object(openid)
+    serializer=UserSerializer(user,data=request.data)
     if serializer.is_valid():
       serializer.save()
-      return Response(serializer.data,status=status.HTTP_201_CREATED)
+      return Response(serializer.data)
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+  
+
 
 
 #该方法禁用csrf
