@@ -3,21 +3,21 @@
     "model": "api.GoodsCategory",
     "pk":1,
     "fields": {
-      "category":"波奇"
+      "goodsCategory":"波奇"
     }
   },
   {
     "model": "api.GoodsCategory",
     "pk":2,
     "fields": {
-      "category":"意面"
+      "goodsCategory":"意面"
     }
   },
   {
     "model": "api.GoodsCategory",
     "pk":3,
     "fields": {
-      "category":"咖啡"
+      "goodsCategory":"软饮"
     }
   }
   

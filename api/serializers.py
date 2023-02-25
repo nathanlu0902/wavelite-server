@@ -5,9 +5,14 @@ from api.models import User,GoodsCategory,Goods
 class GoodsCategorySerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model=GoodsCategory
-    fields=['category','id']
+    fields='__all__'
 
 class GoodsSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model=Goods
-    fields=['id','goodsName','goodsRemark','goodsPrice','goodsCategoryId','goodsPic','goodsSale','goodsSale']
+    fields='__all__'
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+  class Meta:
+    model=User
+    fields='__all__'
