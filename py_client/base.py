@@ -10,7 +10,12 @@ import requests
 # response=requests.put(endpoint,json=data)
 # print(response.json())
 
-endpoint="http://127.0.0.1:8000/api/10202/login"
+# endpoint="http://127.0.0.1:8000/api/10202/login"
+
+# response=requests.get(endpoint)
+# print(response.json())
+
+endpoint="http://127.0.0.1:8000/api/goodsCategory"
 
 response=requests.get(endpoint)
-print(response.json())
+print(response.json)
