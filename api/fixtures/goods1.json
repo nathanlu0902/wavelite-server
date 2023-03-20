@@ -6,7 +6,7 @@
       "goodsName": "地中海蒜香虾波奇碗",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "波奇",
+      "goodsCategoryID": 0,
       "goodsSale": 0,
       "goodsPic": ""
     }
@@ -18,7 +18,7 @@
       "goodsName": "加利福尼亚波奇碗",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "波奇",
+      "goodsCategoryID": 0,
       "goodsSale": 0,
       "goodsPic": ""
     }
@@ -30,7 +30,7 @@
       "goodsName": "日式吞拿鱼波奇碗",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "波奇",
+      "goodsCategoryID": 0,
       "goodsSale": 0,
       "goodsPic": ""
     }
@@ -42,7 +42,7 @@
       "goodsName": "牛肉卷泡菜波奇碗",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "波奇",
+      "goodsCategoryID": "0",
       "goodsSale": 0,
       "goodsPic": ""
     }
@@ -54,7 +54,7 @@
       "goodsName": "博洛尼亚肉酱意面",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "意面",
+      "goodsCategoryID": 1,
       "goodsSale": 0,
       "goodsPic": ""
     }
@@ -66,7 +66,7 @@
       "goodsName": "韩式玫瑰奶油意面",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "意面",
+      "goodsCategoryID": 1,
       "goodsSale": 0,
       "goodsPic": ""
     }
@@ -78,8 +78,33 @@
       "goodsName": "奶油蘑菇鸡胸意面",
       "goodsRemark": "",
       "goodsPrice": 33.00,
-      "goodsCategory": "意面",
+      "goodsCategoryID": 1,
       "goodsSale": 0,
       "goodsPic": ""
     }
-  }]
+  },
+  {
+    "model": "api.Goods",
+    "pk": "SOFT001",
+    "fields": {
+      "goodsName": "椰子水",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryID": 2,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  },
+  {
+    "model": "api.Goods",
+    "pk": "SOFT002",
+    "fields": {
+      "goodsName": "无糖可乐",
+      "goodsRemark": "",
+      "goodsPrice": 33.00,
+      "goodsCategoryID": 2,
+      "goodsSale": 0,
+      "goodsPic": ""
+    }
+  }
+]

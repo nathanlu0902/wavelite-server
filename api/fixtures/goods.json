@@ -1,21 +1,21 @@
 [
   {
     "model": "api.GoodsCategory",
-    "pk":1,
+    "pk":0,
     "fields": {
       "goodsCategory":"波奇"
     }
   },
   {
     "model": "api.GoodsCategory",
-    "pk":2,
+    "pk":1,
     "fields": {
       "goodsCategory":"意面"
     }
   },
   {
     "model": "api.GoodsCategory",
-    "pk":3,
+    "pk":2,
     "fields": {
       "goodsCategory":"软饮"
     }

@@ -39,10 +39,11 @@ class Goods(models.Model):
     goodsName=models.CharField(max_length=30,unique=True)
     goodsRemark=models.TextField(null=True)
     goodsPrice=models.DecimalField(max_digits=7,decimal_places=2,default=0)
-    goodsCategory=models.ForeignKey('GoodsCategory',on_delete=models.CASCADE) #分类删除则菜品也删除
     goodsSale=models.IntegerField(default=0)
     goodsPic=models.CharField(max_length=100,blank=True,null=True)
-    timestamp=models.DateTimeField(auto_now_add=True)
+    timestamp=models.DateTimeField(auto_now_add=True,null=True)
+    goodsCategoryID=models.ForeignKey('GoodsCategory',on_delete=models.CASCADE) #分类删除则菜品也删除
+    qty=models.IntegerField(default=0)
 
     class Meta:
        verbose_name="商品信息"
@@ -52,10 +53,11 @@ class Goods(models.Model):
       return self.goodsName
 
 class GoodsCategory(models.Model):
-    goodsCategory=models.CharField(max_length=30,unique=True,help_text="类别名",primary_key=True)
+    categoryID=models.IntegerField(unique=True,help_text="类别ID",primary_key=True)
+    goodsCategory=models.CharField(max_length=30,unique=True,help_text="类别名")
     # id=models.AutoField(unique=True,help_text="类别code")
     desc=models.TextField(help_text="类别描述",null=True)
-    timestamp=models.DateTimeField(auto_now_add=True)
+    timestamp=models.DateTimeField(auto_now_add=True,null=True)
 
     class Meta:
        verbose_name="商品类别"
